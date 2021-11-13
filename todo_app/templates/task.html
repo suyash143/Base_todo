@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>{{ h1 }}</h1>
+{% if task %}
+  <h2>{{ task.title }}</h2>
+  <h3>{{ task.created }}</h3>
+  <h3>Assigned to - {{ assigned.username }}</h3>
+  <form method="POST">
+
+  {% csrf_token %}
+  <input type="text" name="title" value="{{ task.title }}" placeholder="Enter Tasks Title">
+  <textarea name="description" placeholder="Enter Tasks Description">{{ task.description }}</textarea>
+  <input type="text" name="status" value="{{ task.status }}">
+  <h3>Is_completed</h3>
+    <select name="is_completed">
+      {% if  task.is_completed %}
+    <option value="1" selected>Yes</option>
+        <option value="0">No</option>
+        {% else %}
+        <option value="1" >Yes</option>
+      <option value="0" selected>No</option>
+        {% endif %}
+    <input type="submit">
+  </select>
+
+
+  </form>
+{% endif %}
+</body>
+</html>

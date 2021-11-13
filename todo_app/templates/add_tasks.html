@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="title" placeholder="Enter Tasks Title">
+  <textarea name="description" placeholder="Enter Tasks Description"></textarea>
+  <select name="assigned">
+    {% for user in users %}
+    <option value="{{ user.pk }}">{{ user.username }} ({{ user.id }})</option>
+    {% endfor %}
+  </select>
+  <input type="submit">
+  </select>
+
+
+</form>
+
+</body>
+</html>
